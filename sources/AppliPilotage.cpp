@@ -1,13 +1,18 @@
 //***********************************************************************
 // Date : 23/05/2011		Auteur : MP Pinaud
 // Nom du fichier : AppliPilotage.cpp
-// Rôle : Programme de pilotage de robots Pekee. 
+// Rôle : Programme de pilotage de robots Pekee.
 // L'utilisateur a le choix entre plusieurs robots à piloter. 
-// Les nom et  adresses IP des robots sont saisis au clavier
+// Historique : 
+// 23/04/2021 par MP Pinaud
+// Les noms et  adressse IP des robots sont configurés dans le fichier
+//RobotsConfig.txt
 //**********************************************************************
 
 
 #include <iostream>
+#include <fstream>
+
 
 #include "../include/AppliPilotage.h"
 
@@ -27,7 +32,7 @@ int main(void)
 	bool fin = false;
 
 
-	//Créer liste Robots
+	// Lecture du fichier de configuration et initialisation des robots
 	initRobots();
 	
 	int nbRobots = tabRobots.size();
@@ -65,42 +70,43 @@ int main(void)
 
 	//********************************************************
 	// Fonctions: InitRobots
-	// rôle: Initialise les robots à piloter 
+	// rôle: Initialise les robots à piloter à partir du fichier RobotsConfig.txt
 	//********************************************************
 void initRobots()
 {
-	cout << "Combien de robots voulez-vous piloter ? " << endl;
 
-	int nbRobots;
-	cin >> nbRobots;
+	ifstream fileconfig("RobotsConfig.txt", ios::in);
 
-	for(int i = 0; i < nbRobots; i++) {
-
-		cout << "Robot numero "<< i+1 << endl;
-		cout <<"----------------------"<< endl;
-		cout <<"Nom : "<< endl;
-		string nom;
-		cin >> nom;
-
-		cout <<"AdresseIP: "<< endl;
-		string adrIP;
-		cin >> adrIP;
-
-		CRobotPekee* robot = new CRobotPekee(nom, adrIP);
-		if (robot->estConnecte())
+	if (fileconfig)  // fichier existe
+	{
+		
+		while (fileconfig.eof() == false)
 		{
-			cout << "connexion OK avec le robot " << robot->sonNom() << "  " << robot->sonAdrIP() << endl ;
-			tabRobots.push_back(robot);
+			string nom;
+			string adrIP;
+			fileconfig >> nom;
+			fileconfig >> adrIP;
+
+			CRobotPekee* robot = new CRobotPekee(nom, adrIP);
+			if (robot->estConnecte())
+			{
+					cout << "connexion OK avec le robot " << robot->sonNom() << "  " << robot->sonAdrIP() << endl ;
+					tabRobots.push_back(robot);
+			}
+			else {
+					cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+					cout << "probleme de connexion avec le robot " << robot->sonNom() << "  " << robot->sonAdrIP() << endl;
+					cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+			}
+			
 		}
-		else {
+	}
+	else {
 			cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-			cout << "probleme de connexion avec le robot " << robot->sonNom() << "  " << robot->sonAdrIP() << endl;
+			cout << "Erreur : le fichier RobotsConfig.txt est introuvable" << endl;
 			cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-		}
 			
 	}
-	
-	
 }
 
 	//********************************************************
