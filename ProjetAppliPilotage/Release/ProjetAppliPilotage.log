@@ -1,0 +1,14 @@
+﻿La génération a démarré 18/05/2021 10:00:59.
+Projet "C:\Users\admin\Documents\AppliPilotage\ProjetAppliPilotage\ProjetAppliPilotage.vcxproj" sur le nœud 2 (Build cible(s)).
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\admin\Documents\AppliPilotage\ProjetAppliPilotage\Release\ProjetAppliPilotage.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\wany\maeva2004\Oxygen\pekeev1\c++\libs /LIBPATH:C:\Windows\System32 libRobotPekee.lib wsock32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:msvcirt.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\admin\Documents\AppliPilotage\ProjetAppliPilotage\Release\ProjetAppliPilotage.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\admin\Documents\AppliPilotage\ProjetAppliPilotage\Release\ProjetAppliPilotage.lib" /MACHINE:X86 /SAFESEH:NO Release\AppliPilotage.obj
+  Release\RobotPekee.obj
+     Création de la bibliothèque C:\Users\admin\Documents\AppliPilotage\ProjetAppliPilotage\Release\ProjetAppliPilotage.lib et de l'objet C:\Users\admin\Documents\AppliPilotage\ProjetAppliPilotage\Release\ProjetAppliPilotage.exp
+  Génération de code en cours
+  Fin de la génération du code
+  ProjetAppliPilotage.vcxproj -> C:\Users\admin\Documents\AppliPilotage\ProjetAppliPilotage\Release\ProjetAppliPilotage.exe
+Génération du projet "C:\Users\admin\Documents\AppliPilotage\ProjetAppliPilotage\ProjetAppliPilotage.vcxproj" terminée (Build cible(s)).
+
+La génération a réussi.
+
+Temps écoulé 00:00:01.01
