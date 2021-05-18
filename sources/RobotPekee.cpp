@@ -6,7 +6,7 @@
 //********************************************************
 #include <iostream>
 using namespace std;
-
+#include <Windows.h>
 #include "../include/RobotPekee.h"
 
 	//********************************************************
